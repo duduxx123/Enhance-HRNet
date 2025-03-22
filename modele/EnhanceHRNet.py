@@ -111,9 +111,9 @@ class FPN(nn.Module):
         res.append(x3)
         return res
 
-class Mymodel(nn.Module):
+class EnhanceHRNet(nn.Module):
     def __init__(self, num_joints=17):
-        super(Mymodel, self).__init__()
+        super(EnhanceHRNet, self).__init__()
         self.stem = Stem(3,32,32)
         self.FPN = FPN(32)
         # 载入hrnet原模型
@@ -134,7 +134,7 @@ class Mymodel(nn.Module):
         return hr_out
 
 if __name__ == '__main__':
-    model = Mymodel()
+    model = EnhanceHRNet()
     x = torch.randn(2, 3, 256, 192).cuda()
     # x = torch.randn(2, 3, 384, 288).cuda()
     batch = x.shape[0]
